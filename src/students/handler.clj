@@ -7,21 +7,11 @@
   (:gen-class))
 
 (defroutes app-routes
-  (GET "/"
-       []
-       (views/home-page))
-  (GET "/add-student"
-       []
-       (views/add-student-page))
-  (POST "/add-student"
-        {params :params}
-        (views/add-student-results-page params))
-  (GET "/student/:loc-id"
-       [loc-id]
-       (views/student-page loc-id))
-  (GET "/all-students"
-       []
-       (views/all-students-page))
+  (GET "/" [] (views/home-page))
+  (GET "/add-student" [] (views/add-student-page))
+  (POST "/add-student" {params :params} (views/add-student-results-page params))
+  (GET "/student/:s-id" [s-id] (views/student-page s-id))
+  (GET "/all-students" [] (views/all-students-page))
   (route/resources "/")
   (route/not-found "Not Found"))
 
